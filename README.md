@@ -1,2 +1,2 @@
 # Misc
-Algortihms, coding solutions, book implementations
+This repository contains theoretical algortihms, coding solutions, and book implementations
