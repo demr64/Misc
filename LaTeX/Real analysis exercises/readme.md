@@ -1,1 +1,1 @@
-This is a very small LaTeX project did in University for the Mathematical Analysis exam, it was about understanding and writing a LaTeX solution of three problems, two proofs and one extensive function study.
+This is a small LaTeX project did in University for the Mathematical Analysis exam, it was about understanding and writing a LaTeX solution of three problems, two proofs and one extensive function study.
