@@ -140,7 +140,7 @@ per l'asintoto obliquo abbiamo m = -1 per ipotesi, ci basta calcolare in questo 
 \lim_{x\to-\infty}\frac{11x+18}{2-x} = -11
 \]
 
-quindi $y = x - 11$ è l'asintoto obliquo per $-\infty$.
+quindi $y = -x - 11$ è l'asintoto obliquo per $-\infty$.
 
 derivata prima, per la regola di derivazione di una frazione abbiamo che:
 \[
@@ -186,12 +186,16 @@ abbiamo che $f(0) = 9$, allora abbiamo che la funzione è continua in 0. Per il 
 $x \leq 3 \land x \geq 6 $ e $x < 2$, quindi
 \\\\
 \begin{tikzpicture}
-\draw[thick, ->] (0,0) -- (8,0);
-\filldraw (3,0) circle (2pt) node[anchor=south]{$2-2\sqrt{10}$};
-\filldraw (2,0) node[anchor=north]{-};
-\filldraw (4,0) node[anchor=north]{+};
-\filldraw (5,0) circle (2pt) node[anchor=south]{0};
-\filldraw (6,0) node[anchor=north]{DNE};
+\draw[thick, ->] (0,0) -- (10,0);
+\filldraw (2,0) circle (2pt) node[anchor=south]{0};
+\filldraw (1,0) node[anchor=north]{DNE};
+\filldraw (4,0) circle (2pt) node[anchor=south]{2};
+\filldraw (3,0) node[anchor=north]{+};
+\filldraw (6,0) circle (2pt) node[anchor=south]{3};
+\filldraw (5,0) node[anchor=north]{-};
+\filldraw (7,0) node[anchor=north]{+};
+\filldraw (8,0) circle (2pt) node[anchor=south]{6};
+\filldraw (9,0) node[anchor=north]{-};
 \end{tikzpicture}
 \\\\
 Non possiede asintoti orizzontali,
@@ -216,7 +220,134 @@ x^2 - 4x \leq 0
 (2-x)^2 > 0
 \]
 \\
-
+le due equazioni danno soluzioni: $0 \leq x  \leq 4 \land \forall x \in R-\{2\}$ quindi, usando la tabella dei segni
+\\\\
+\begin{tikzpicture}
+\draw[thick, ->] (0,0) -- (8,0);
+\filldraw (2,0) circle (2pt) node[anchor=south]{0};
+\filldraw (1,0) node[anchor=north]{DNE};
+\filldraw (4,0) circle (2pt) node[anchor=south]{2};
+\filldraw (3,0) node[anchor=north]{+};
+\filldraw (6,0) circle (2pt) node[anchor=south]{4};
+\filldraw (5,0) node[anchor=north]{+};
+\filldraw (7,0) node[anchor=north]{-};
+\end{tikzpicture}
+\\\\
+Abbiamo che $f(4) = 1$, che è un punto di massimo. Inoltre  il punto $0$ è angoloso, infatti
+\[
+\lim_{x \to 0^-} f'(x) =  9 \ne \lim_{x \to 0^+} f'(x) =  0
+\]
+Infatti $f$ è definita come $f'(x) = \frac{-x^2+4x+36}{(2-x)^2}$ da sinistra, e $f'(x) =  \frac{-x^2 + 4x}{(2-x)^2}$ da destra. Per la derivata seconda:
+\[
+f''(x) = \frac{('2x+4)(2-x)^2 + 2(2-x)(-x^2+4x)}{(2-x)^2} = \frac{2(2-x)(4)}{(2-x)^4}
+\]
+\[
+= \frac{8}{(2-x)^3}
+\]
+cui banalmente vale,
+\\\\
+\begin{tikzpicture}
+\draw[thick, ->] (0,0) -- (8,0);
+\filldraw (3,0) circle (2pt) node[anchor=south]{0};
+\filldraw (2,0) node[anchor=north]{DNE};
+\filldraw (4,0) node[anchor=north]{+};
+\filldraw (5,0) circle (2pt) node[anchor=south]{2};
+\filldraw (6,0) node[anchor=north]{-};
+\end{tikzpicture}
+\\\\
 PARTE III.
-Come dimostrato nel punto II. 0 appartiene a f, abbiamo $A(0,9)$ e quindi
+Come dimostrato nel punto II. 0 appartiene a $f$, abbiamo $A(0,9)$ e quindi interseca l'asse delle ordinate in 9. La retta tangente in $A$ sarà: $y = f'(x)(x-x_0) +f(x_0) \implies y = 9(x-0) + 9 \implies y = 9x+ 9$.
+\\\\PARTE IV. dobbiamo calcolare l'integrale 
+\[
+A(D) = \int_{-2}^1 \frac{x^2 - 9|x| + 18}{2-x}dx =  \int_{-2}^0\frac{x^2 + 9x + 18}{2-x}dx + 
+ \int_{0}^1\frac{x^2 - 9x + 18}{2-x}dx
+\]
+per il primo, possiamo dividere per ruffini, e otteniamo
+\\\\
+\begin{tikzpicture}
+\draw[thick] (0,0) -- (5,0);
+\draw[thick] (1,-1) -- (1, 2);
+\draw[thick] (4,-1) -- (4 , 2);
+\filldraw (2,0) node[anchor=north]{1};
+\filldraw (0,0) node[anchor=south west]{2};
+\filldraw (3,0) node[anchor=north]{11};
+\filldraw (2,2) node[anchor=north]{1};
+\filldraw (3,2) node[anchor=north]{9};
+\filldraw (3,1) node[anchor=north]{12};
+\filldraw (5,2) node[anchor=north east]{18};
+\filldraw (5,1) node[anchor=north east]{22};
+\filldraw (5,0) node[anchor=north east]{40};
+\end{tikzpicture}
+\\\\
+\[
+\int \frac{x^2 + 9x + 18}{2-x}dx = -\int \frac{(2-x)(x+11)}{(2-x)}dx  -40\int\ \frac{1}{x-2}dx
+\]
+\[
+= -\int (x+11) dx - 40ln|x-2| = -\frac{(x+11)^2}{2} - 40ln|x-2|
+\]
+Parimente per il secondo abbiamo
+\\\\
+\begin{tikzpicture}
+\draw[thick] (0,0) -- (5,0);
+\draw[thick] (1,-1) -- (1, 2);
+\draw[thick] (4,-1) -- (4 , 2);
+\filldraw (2,0) node[anchor=north]{1};
+\filldraw (0,0) node[anchor=south west]{2};
+\filldraw (3,0) node[anchor=north]{-7};
+\filldraw (2,2) node[anchor=north]{1};
+\filldraw (3,2) node[anchor=north]{-9};
+\filldraw (3,1) node[anchor=north]{2};
+\filldraw (5,2) node[anchor=north east]{18};
+\filldraw (5,1) node[anchor=north east]{-14};
+\filldraw (5,0) node[anchor=north east]{4};
+\end{tikzpicture}
+\\\\
+\[
+\int \frac{x^2 - 9x + 18}{2-x}dx = -\int \frac{(2-x)(x-7)}{(2-x)}dx  -4\int\ \frac{1}{x-2}dx
+\]
+\[
+= -\int (x-7) dx - 4ln|x-2| = -\frac{(x-7)^2}{2} - 4ln|x-2|
+\]
+per la formula fondamentale del calcolo integrale dobbiamo sicché calcolare
+\[
+\left[ -\frac{(x+11)^2}{2} - 40ln|x-2|\right]_{-2}^0 + \left[ -\frac{(x-7)^2}{2} - 4ln|x-2|\right]_{0}^1 = 
+\]
+\[
+-\frac{121}{2} - 40ln(2) + \frac{81}{2} + 40ln(4) -18 + \frac{49}{2} + 4ln(2) =
+\]
+\[
+\frac{9}{2} - 18 - 35ln(2) + 80ln(2) \implies A(D) = 44ln(2) -\frac{27}{2}
+\]
+\\\\
+PARTE V. abbiamo dimostrato che è $f(x)$ è continua in tutto $R-\{2\}$,  per il teorema di lagrange $\exists c \in ]0,1[$ tale che
+\[
+\frac{-c^2+4c}{(2-c)^2} = \frac{f(1)-f(0)}{1-0} \implies
+\]
+\[
+-c^2 + 4c = 4 -4c + c^2, 
+\]
+\[
+2c^2 -8c + 4 = 0 \implies c^2 - 4c + 2 = 0
+\]
+dalla quale otteniamo,
+$c = 2\pm2\sqrt{2}$ nell'intervallo $]0,1[$ ci da $c = 2-\sqrt{2}$
+la funzinoe non è derivabile in $[-3;1]$, non sono verificate le ipotesi del teorema di Lagrange, infatti $f(x)$ non è derivabile in $0 \in ]-3,1[$.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{image2.png}
+    \caption{grafico della funzione}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{image3.png}
+    \caption{asintoti}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{image.png}
+    \caption{area dell'integrale}
+    \label{fig:enter-label}
+\end{figure}
 \end{document}
