@@ -5,6 +5,7 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{tikz}
+\newtheorem{theorem}{Theorem}
 \usepackage{enumitem}\usepackage{systeme}
 \begin{document}
 
@@ -15,7 +16,7 @@ Corso di Laurea in Scienze e Tecnologie informatiche\\
 Dennis Antonio Amiranda
 \end{center}
 
-\section*{Abstract  }
+\section*{Introduzione }
 Questo progetto vuole essere una trascrizione e revisione di alcuni esercizi che sono attinenti al corso di Analisi Matematica 1, con il fine di arricchire e raffinare la comprensione degli argomenti trattati. Gli esercizi svolti sono tre, due concernono la dimostrazione di due disuguaglianze, la prima e la seconda sono un caso specifico della inequality of arithmetic and geometric means (AM-GM inequality). Il terzo esercizio riguarda una funzione fratta, e uno studio estensivo delle sue proprietà.
 
 %ESERCIZIO 6
@@ -99,7 +100,7 @@ d - 2 = 0 \quad \Rightarrow \quad d = 2.
 \]
 Per l’obliquo invece,
 \[
-\lim_{x \to \infty} \frac{ax^2 + b|x| + c}{d - x} \cdot \frac{1}{x} = \lim_{x \to \infty} \frac{ax^2}{-x} \cdot \frac{1}{x} = -a.
+\lim_{x \to \infty} \frac{ax^2 + b|x| + c}{d - x} \cdot \frac{1}{x} \sim \lim_{x \to \infty} \frac{ax^2}{-x} \cdot \frac{1}{x} = -a.
 \]
 Allora deve essere che \(a = 1\).
 Poiché \(A(3, 0) \in \gamma\) e \(B(-6, 0) \in \gamma\), otteniamo:
@@ -109,24 +110,43 @@ Poiché \(A(3, 0) \in \gamma\) e \(B(-6, 0) \in \gamma\), otteniamo:
 \systeme*{-3b -9 = c, 36 + 3b -9  = 0} 
 \] 
 \[
-\systeme*{b = -9, c = 18} 
+\systeme*{-3b -9 = c, 3b = -27} \Rightarrow 
+\systeme*{-3*-9 -9 = c, b = -9} \Rightarrow 
+\systeme*{c = 18, b = -9} 
 \]
 \\
 PARTE II.
 studiamo
 $f(x) = \frac{x^2 - 9|x| + 18}{2-x}$, il suo campo di esistenza è $R-\{2\}$. La funzione ha un valore assoluto, dobbiamo allora studiarne l'andamento in due casi: per $x \in ]-\infty, 0[$ e $x \in [0, \infty[ - \{2\}$.
-Nel caso 1 abbiamo che $f(x) = \frac{x^2 + 9x + 18}{2-x}$, studiamo il segno, $x^2 + 9x + 18 \geq 0$ e $2-x > 0$
+Nel caso 1 abbiamo che $f(x) = \frac{x^2 + 9x + 18}{2-x}$, studiamo il segno, abbiamo che
+\[
+x^2 + 9x + 18 \geq 0
+\]
+\[
+2-x > 0
+\]
 che ci danno, come soluzioni, $x \leq -6 \land x \geq -3$ e $x < 2$, studiando il grafico, otteniamo
 \\\\
 \begin{tikzpicture}
-\draw[thick, ->] (0,0) -- (8,0);
-\filldraw (2,0) circle (2pt) node[anchor=south]{-6};
-\filldraw (1,0) node[anchor=north]{+};
-\filldraw (4,0) circle (2pt) node[anchor=south]{-3};
-\filldraw (3,0) node[anchor=north]{-};
-\filldraw (6,0) circle (2pt) node[anchor=south]{0};
-\filldraw (5,0) node[anchor=north]{+};
-\filldraw (7,0) node[anchor=north]{DNE};
+\draw[thick, ->] (1,0) -- (9,0);
+\draw[thick, ->] (1,-0.5) -- (9,-0.5);
+\draw[thick, ->] (1,-1) -- (9,-1);
+\filldraw (10.5, 0) node{$x^2 + 9x + 18 \geq 0$};
+\filldraw (10, -0.5) node{$2-x > 0$};
+\filldraw (10, -1) node{$f(x) \geq 0$};
+\filldraw (3,0) circle (2pt) node[anchor=south]{-6};
+\filldraw (2,0) node[anchor=north]{+};
+\filldraw (5,0) circle (2pt) node[anchor=south]{-3};
+\filldraw (4,0) node[anchor=north]{-};
+\filldraw (7,0) circle (2pt) node[anchor=south]{0};
+\filldraw (6,0) node[anchor=north]{+};
+\filldraw (8,-1) node[anchor=north]{$\not\exists x$};
+\filldraw (2,-0.5) node[anchor=north]{+};
+\filldraw (4,-0.5) node[anchor=north]{+};
+\filldraw (6,-0.5) node[anchor=north]{+};
+\filldraw (2,-1) node[anchor=north]{+};
+\filldraw (4,-1) node[anchor=north]{-};
+\filldraw (6,-1) node[anchor=north]{+};
 \end{tikzpicture}
 \\\\
 quindi abbiamo che $x \in ]-\infty, -6]$ e $x \in [-3, 0[$
@@ -140,7 +160,7 @@ per l'asintoto obliquo abbiamo m = -1 per ipotesi, ci basta calcolare in questo 
 \lim_{x\to-\infty} f(x)-x = \lim_{x\to-\infty}\frac{x^2 + 9x + 18}{2-x} - \frac{2x-4}{2-x}
 \]
 \[
-\lim_{x\to-\infty}\frac{11x+18}{2-x} = -11
+\lim_{x\to-\infty}\frac{11x+18}{2-x} \sim \lim_{x\to-\infty}\frac{11x}{-x} = -11
 \]
 
 quindi $y = -x - 11$ è l'asintoto obliquo per $-\infty$.
@@ -159,12 +179,21 @@ x^2-4x-36 \leq 0
 che hanno soluzione $x \geq 2-2\sqrt{10} \land x \leq 2+2\sqrt{10}$ e $\forall x \in R-\{2\}$, quindi
 \\\\
 \begin{tikzpicture}
-\draw[thick, ->] (0,0) -- (8,0);
-\filldraw (3,0) circle (2pt) node[anchor=south]{$2-2\sqrt{10}$};
+\draw[thick, ->] (1,0) -- (9,0);
+\draw[thick, ->] (1,-0.5) -- (9,-0.5);
+\draw[thick, ->] (1,-1) -- (9,-1);
+\filldraw (10.5, 0) node{$x^2-4x-36 \leq 0$};
+\filldraw (10.5, -0.5) node{$(2-x)^2 > 0$};
+\filldraw (10, -1) node{$f(x) \geq 0$};
 \filldraw (2,0) node[anchor=north]{-};
 \filldraw (4,0) node[anchor=north]{+};
+\filldraw (2,-0.5) node[anchor=north]{+};
+\filldraw (4,-0.5) node[anchor=north]{+};
+\filldraw (3,0) circle (2pt) node[anchor=south]{$2-2\sqrt{10}$};
+\filldraw (2,-1) node[anchor=north]{-};
+\filldraw (4,-1) node[anchor=north]{+};
 \filldraw (5,0) circle (2pt) node[anchor=south]{0};
-\filldraw (6,0) node[anchor=north]{DNE};
+\filldraw (6,-1) node[anchor=north]{$\not\exists x$};
 \end{tikzpicture}
 \\\\
 
@@ -183,34 +212,54 @@ per il segno,
 x^2-9x+18 \geq 0
 \]
 \[
-x < 2
+2 - x> 0
 \]
 abbiamo che $f(0) = 9$, allora abbiamo che la funzione è continua in 0. Per il segno 
 $x \leq 3 \land x \geq 6 $ e $x < 2$, quindi
 \\\\
 \begin{tikzpicture}
-\draw[thick, ->] (0,0) -- (10,0);
-\filldraw (2,0) circle (2pt) node[anchor=south]{0};
-\filldraw (1,0) node[anchor=north]{DNE};
-\filldraw (4,0) circle (2pt) node[anchor=south]{2};
-\filldraw (3,0) node[anchor=north]{+};
-\filldraw (6,0) circle (2pt) node[anchor=south]{3};
-\filldraw (5,0) node[anchor=north]{-};
-\filldraw (7,0) node[anchor=north]{+};
-\filldraw (8,0) circle (2pt) node[anchor=south]{6};
-\filldraw (9,0) node[anchor=north]{-};
+
+\draw[thick, ->] (1,0) -- (11,0);
+\draw[thick, ->] (1,-0.5) -- (11,-0.5);
+\draw[thick, ->] (1,-1) -- (11,-1);
+\filldraw (12.5, 0) node{$x^2-9x+18 \geq 0$};
+\filldraw (12, -0.5) node{$2-x > 0$};
+\filldraw (12, -1) node{$f(x) \geq 0$};
+\filldraw (4,0) node[anchor=north]{+};
+\filldraw (6,0) node[anchor=north]{+};
+\filldraw (8,0) node[anchor=north]{-};
+\filldraw (10,0) node[anchor=north]{+};
+
+\filldraw (4,-0.5) node[anchor=north]{+};
+\filldraw (6,-0.5) node[anchor=north]{-};
+\filldraw (8,-0.5) node[anchor=north]{-};
+\filldraw (10,-0.5) node[anchor=north]{-};
+
+\filldraw (4,-1) node[anchor=north]{+};
+\filldraw (6,-1) node[anchor=north]{-};
+\filldraw (8,-1) node[anchor=north]{+};
+\filldraw (10,-1) node[anchor=north]{-};
+
+\filldraw (3,0) circle (2pt) node[anchor=south]{0};
+\filldraw (2,-1) node[anchor=north]{$\not\exists x$};
+\filldraw (5,0) circle (2pt) node[anchor=south]{2};
+\filldraw (7,0) circle (2pt) node[anchor=south]{3};
+\filldraw (9,0) circle (2pt) node[anchor=south]{6};
 \end{tikzpicture}
 \\\\
 Non possiede asintoti orizzontali,
 \[
-\lim_{x \to +\infty} f(x) = -\infty
+\lim_{x \to +\infty}\frac{x^2 - 9x + 18}{2-x} \sim \lim_{x \to +\infty}\frac{x}{-1} = -\infty 
 \]
-Invece ha asintoti obliqui.
+Invece ha asintoti obliqui, infatti,
 \[
-\lim_{x \to +\infty} f(x) \cdot \frac{1}{x} = -1
+\lim_{x \to +\infty}\frac{x^2 - 9x + 18}{2-x} \cdot \frac{1}{x} \sim \lim_{x \to +\infty}\frac{x^2}{-x^2} = -1
 \]
 \[
-\lim_{x \to +\infty} f(x) -x =  7
+\lim_{x \to +\infty}\frac{x^2 - 9x + 18}{2-x} + x =  \lim_{x \to +\infty}\frac{x^2 - 9x + 18 + (2x-x^2)}{2-x}
+\]
+\[
+\lim_{x \to +\infty}\frac{-7x +18}{2-x} \sim \lim_{x \to +\infty}\frac{-7x}{-x} = 7
 \]
 allora $y = -x + 7$ è asintoto obliquo. La derivata prima è\\
 \[f'(x) = \frac{(2x-9)(2-x) + x^2 -9x + 18}{(2-x)^2} = \frac{-x^2 + 4x}{(2-x)^2}
@@ -226,14 +275,27 @@ x^2 - 4x \leq 0
 le due equazioni danno soluzioni: $0 \leq x  \leq 4 \land \forall x \in R-\{2\}$ quindi, usando la tabella dei segni
 \\\\
 \begin{tikzpicture}
-\draw[thick, ->] (0,0) -- (8,0);
-\filldraw (2,0) circle (2pt) node[anchor=south]{0};
-\filldraw (1,0) node[anchor=north]{DNE};
-\filldraw (4,0) circle (2pt) node[anchor=south]{2};
+\draw[thick, ->] (1,0) -- (8,0);
+\draw[thick, ->] (1,-0.5) -- (8,-0.5);
+\draw[thick, ->] (1,-1) -- (8,-1);
+\filldraw (11, 0) node{$x^2 - 4x \leq 0$};
+\filldraw (11, -0.5) node{$(2-x)^2 > 0$};
+\filldraw (11, -1) node{$f(x) \geq 0$};
 \filldraw (3,0) node[anchor=north]{+};
-\filldraw (6,0) circle (2pt) node[anchor=south]{4};
 \filldraw (5,0) node[anchor=north]{+};
 \filldraw (7,0) node[anchor=north]{-};
+\filldraw (3,-0.5) node[anchor=north]{+};
+\filldraw (5,-0.5) node[anchor=north]{+};
+\filldraw (7,-0.5) node[anchor=north]{+};
+\filldraw (3,-1) node[anchor=north]{+};
+\filldraw (5,-1) node[anchor=north]{+};
+\filldraw (7,-1) node[anchor=north]{-};
+\filldraw (2,0) circle (2pt) node[anchor=south]{0};
+\filldraw (1,-1) node[anchor=north]{$\not\exists x$};
+\filldraw (4,0) circle (2pt) node[anchor=south]{2};
+
+\filldraw (6,0) circle (2pt) node[anchor=south]{4};
+
 \end{tikzpicture}
 \\\\
 Abbiamo che $f(4) = 1$, che è un punto di massimo. Inoltre  il punto $0$ è angoloso, infatti
@@ -247,15 +309,25 @@ f''(x) = \frac{('2x+4)(2-x)^2 + 2(2-x)(-x^2+4x)}{(2-x)^2} = \frac{2(2-x)(4)}{(2-
 \[
 = \frac{8}{(2-x)^3}
 \]
-cui banalmente vale,
+della quale, calcolando il segno banalmente vale,
 \\\\
 \begin{tikzpicture}
-\draw[thick, ->] (0,0) -- (8,0);
-\filldraw (3,0) circle (2pt) node[anchor=south]{0};
-\filldraw (2,0) node[anchor=north]{DNE};
+\draw[thick, ->] (1,0) -- (8,0);
+\draw[thick, ->] (1,-0.5) -- (8,-0.5);
+\draw[thick, ->] (1,-1) -- (8,-1);
+\filldraw (10, 0) node{$8 \geq 0$};
+\filldraw (10, -0.5) node{$(2-x)^3 > 0$};
+\filldraw (10, -1) node{$f(x) \geq 0$};
+\filldraw (2,-1) node[anchor=north]{$\not\exists x$};
 \filldraw (4,0) node[anchor=north]{+};
+\filldraw (6,0) node[anchor=north]{+};
+\filldraw (4,-0.5) node[anchor=north]{+};
+\filldraw (6,-0.5) node[anchor=north]{-};
+\filldraw (4,-1) node[anchor=north]{+};
+\filldraw (6,-1) node[anchor=north]{-};
+\filldraw (3,0) circle (2pt) node[anchor=south]{0};
 \filldraw (5,0) circle (2pt) node[anchor=south]{2};
-\filldraw (6,0) node[anchor=north]{-};
+
 \end{tikzpicture}
 \\\\
 PARTE III.
@@ -311,7 +383,11 @@ Parimente per il secondo abbiamo
 \[
 = -\int (x-7) dx - 4ln|x-2| = -\frac{(x-7)^2}{2} - 4ln|x-2|
 \]
-per la formula fondamentale del calcolo integrale dobbiamo sicché calcolare
+Ricordiamo il
+\begin{theorem}[Formula fondamentale del calcolo integrale]
+L'integrale di una funzione integranda f(x) è uguale alla differenza della primitiva di f calcolata ai due estremi dell'integrale:
+$\int_a^b f(x)dx = F(b) - F(a)$
+\end{theorem}
 \[
 \left[ -\frac{(x+11)^2}{2} - 40ln|x-2|\right]_{-2}^0 + \left[ -\frac{(x-7)^2}{2} - 4ln|x-2|\right]_{0}^1 = 
 \]
@@ -322,7 +398,13 @@ per la formula fondamentale del calcolo integrale dobbiamo sicché calcolare
 \frac{9}{2} - 18 - 35ln(2) + 80ln(2) \implies A(D) = 44ln(2) -\frac{27}{2}
 \]
 \\\\
-PARTE V. abbiamo dimostrato che è $f(x)$ è continua in tutto $R-\{2\}$,  per il teorema di lagrange $\exists c \in ]0,1[$ tale che
+PARTE V. abbiamo dimostrato nel punto II che è $f(x)$ è continua in tutto $R-\{2\}$, in particolare $f(x)$ è continua in $]0,1[$ sicché per il teorema di lagrange $\exists c \in ]0,1[$
+infatti, ricordiamo il
+\begin{theorem}[Di lagrange]
+Se $f$ è una funzione continua in $[a,b]$ e $f$ è derivabile in $(a,b)$, allora $\exists c \in (a,b) |
+f(c) = \frac{f(b)-f(a)}{b-a}$
+\end{theorem}
+Sicché il nostro integrale si riduce a calcolare
 \[
 \frac{-c^2+4c}{(2-c)^2} = \frac{f(1)-f(0)}{1-0} \implies
 \]
@@ -332,9 +414,9 @@ PARTE V. abbiamo dimostrato che è $f(x)$ è continua in tutto $R-\{2\}$,  per i
 \[
 2c^2 -8c + 4 = 0 \implies c^2 - 4c + 2 = 0
 \]
-dalla quale otteniamo,
-$c = 2\pm2\sqrt{2}$ nell'intervallo $]0,1[$ ci da $c = 2-\sqrt{2}$
-la funzinoe non è derivabile in $[-3;1]$, non sono verificate le ipotesi del teorema di Lagrange, infatti $f(x)$ non è derivabile in $0 \in ]-3,1[$.
+dalla quale otteniamo $c = 2\pm2\sqrt{2}$ nell'intervallo $]0,1[$ ci da $c = 2-\sqrt{2}$
+la funzione non è derivabile in $[-3;1]$, non sono verificate le ipotesi del teorema di Lagrange, infatti $f(x)$ non è derivabile in $0 \in ]-3,1[$.
+\newpage
 \begin{figure}
     \centering
     \includegraphics[width=0.6\linewidth]{image2.png}
